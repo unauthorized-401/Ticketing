@@ -1,0 +1,138 @@
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Random;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import DB.MemberDAO;
+
+public class Seats extends JPanel implements ActionListener, Runnable{
+	JFrame jf = new JFrame("좌석 선택 창");
+	private int view_time=CurrInfo.getSeattime();
+	JLabel timer=new JLabel();
+	Random rd = new Random();
+	static long start = 0, end = 0, time = 0;
+	int cnt = 96, num[] = new int[97];
+	Button[] mButton = new Button[96];
+	
+	public Seats(){
+		start = System.currentTimeMillis();
+		
+		for(int i = 0; i < 96; i++) mButton[i] = new Button("\n");
+		
+		Panel p1 = new Panel();
+		Panel p2 = new Panel();
+		Panel p3 = new Panel();
+		Panel p4 = new Panel();
+		Panel p5 = new Panel();
+		Panel p6 = new Panel();
+		Panel p7 = new Panel();
+		Panel p8 = new Panel(new GridLayout(10,1));
+		p8.setBackground(Color.WHITE);
+		
+		for(int i = 0; i < 96; i++) mButton[i].setBackground(new Color(165, 102, 255));
+		
+		p1.add(timer);
+		for(int i = 0; i < 16; i++) p2.add(mButton[i]);
+		for(int i = 16; i < 32; i++) p3.add(mButton[i]);
+		for(int i = 32; i < 48; i++) p4.add(mButton[i]);
+		for(int i = 48; i < 64; i++) p5.add(mButton[i]);
+		for(int i = 64; i < 80; i++) p6.add(mButton[i]);
+		for(int i = 80; i < 96; i++) p7.add(mButton[i]);
+		
+		p8.add(p1); p8.add(p2); p8.add(p3); p8.add(p4); p8.add(p5); p8.add(p6); p8.add(p7); jf.add(p8);
+		
+		jf.setSize(1000, 600);
+		jf.setLocationRelativeTo(null);
+        jf.setVisible(true); 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        for(int i = 0; i < 96; i++) mButton[i].addActionListener(this);
+        new Thread(this).start();
+	}
+	
+	public void run() { 
+		view_time += 1;
+		while( true ) { 
+			try { 
+				view_time--; 
+				if( view_time < 0 ) { 
+		        	view_time = 0; 
+		        } 
+				timer.setForeground(Color.RED);
+		        timer.setText( "00 : 0" + view_time);
+		        timer.setFont(new Font("맑은 고딕", Font.BOLD,30));
+		        Thread.sleep(1000); 
+		    } catch(Exception e) { 
+		        e.printStackTrace(); 
+		    } 
+		} 
+    } 
+	public int getDigit(String str){
+		String tmpStr="";
+		char[] chArr=str.toCharArray();
+		int cntcharrTelno=chArr.length;
+		for(int i=0;i<cntcharrTelno;i++) {
+			if(Character.isDigit(chArr[i])) tmpStr+=chArr[i]; 
+		}
+		return Integer.parseInt(tmpStr);
+	}
+	public void actionPerformed(ActionEvent ae) {
+		Color c = new Color(189, 189, 189);
+		end = System.currentTimeMillis();
+		time = (long) ((end - start) / 1000.0);
+		
+		//제한시간이 지났을대 모두 회색
+		if(time >= CurrInfo.getSeattime()) {
+			new SeatFail();
+			for(int i = 0; i < 96; i++) mButton[i].setBackground(c);
+		}
+		
+		//시간에 따라 선택할 수 없는 좌석의 수
+		if(time == CurrInfo.getSeattime()) cnt = 20;
+		else if(time == CurrInfo.getSeattime()-1) cnt = 35;
+		else if(time == CurrInfo.getSeattime()-2) cnt = 45;
+		else if(time == CurrInfo.getSeattime()-3) cnt = 55;
+		else if(time == CurrInfo.getSeattime()-4) cnt = 68;
+		else if(time == CurrInfo.getSeattime()-5) cnt = 79;
+		else cnt = 96;
+		
+		for(int i = 1; i <= cnt; i++){
+			num[i] = rd.nextInt(cnt-1) + 1;
+		}
+		
+		if(time >= CurrInfo.getSeattime()) new SeatFail();
+		String check = "n";
+		if(time < CurrInfo.getSeattime()){
+			for(int i = 0; i < 96; i++){
+				if(ae.getSource() == mButton[i]) {
+					for(int j = 1; j <= 96; j++) if(num[j] == i+1) check="y";
+					if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+					else{ CurrInfo.setSeatnum(i+1); new How();}
+				}
+			}
+		}
+
+		for(int i = 0; i < 96; i++){
+			for(int j = 0; j < 96; j++){
+				if(num[i] == j+1) mButton[i].setBackground(c);
+			}
+		}
+	}
+	class WClass extends WindowAdapter{
+		public void windowClosing(WindowEvent e) { System.exit(0); }
+	}
+	public static void main(String[] args) {
+		new Seats();
+	}
+}

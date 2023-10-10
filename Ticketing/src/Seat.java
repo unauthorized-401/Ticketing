@@ -1,0 +1,124 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import DB.MemberDAO;
+
+public class Seat extends JPanel implements ActionListener{
+	JFrame jf = new JFrame("ÁÂ¼® ¼±ÅÃ Ã¢");
+	
+	JButton b1 = new JButton();
+    JButton b2 = new JButton();
+    JButton b3 = new JButton();
+    JButton b4 = new JButton();
+    
+	public Seat(){
+		JLabel jl1=new JLabel(" ");
+		JLabel jl2=new JLabel(" ");
+		
+		b1.setPreferredSize(new Dimension(180, 140));
+		b1.setBackground(new Color(100,86,164));
+		b1.setFont(new Font("Arial", Font.PLAIN, 40));
+		b1.setForeground(Color.WHITE);
+		b1.setText("A");
+		
+		b2.setPreferredSize(new Dimension(180, 140));
+		b2.setBackground(new Color(100,86,164));
+		b2.setFont(new Font("Arial", Font.PLAIN, 40));
+		b2.setForeground(Color.WHITE);
+		b2.setText("B");
+		
+		b3.setPreferredSize(new Dimension(180, 140));
+		b3.setBackground(new Color(100,86,164));
+		b3.setFont(new Font("Arial", Font.PLAIN, 40));
+		b3.setForeground(Color.WHITE);
+		b3.setText("C");
+		
+		b4.setPreferredSize(new Dimension(180, 140));
+		b4.setBackground(new Color(100,86,164));
+		b4.setFont(new Font("Arial", Font.PLAIN, 40));
+		b4.setForeground(Color.WHITE);
+		b4.setText("D");
+		
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
+		JPanel p3 = new JPanel();
+		JPanel p4 = new JPanel();
+		p4.setLayout(new GridLayout(4,1));
+        
+		JLabel label = new JLabel();
+		
+		ImageIcon icon = new ImageIcon("image/stage.png");
+		label.setIcon(icon);
+		label.setText(null);
+	    
+	    p1.add(label);
+	    p1.setBackground(Color.WHITE);
+	    p2.add(b1); 
+	    p2.add(jl1);
+	    p2.add(b2); 
+	    p2.setBackground(Color.WHITE);
+	    p3.add(b3); 
+	    p3.add(jl2);
+	    p3.add(b4);
+	    p3.setBackground(Color.WHITE);
+	    p4.add(p1);
+	    p4.add(p2);
+	    p4.add(p3);
+	    p4.setBackground(Color.WHITE);
+		jf.add(p4);
+		
+		jf.setSize(1000, 600);
+		jf.setLocationRelativeTo(null);
+        jf.setVisible(true); 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+	}
+	class WClass extends WindowAdapter{
+		public void windowClosing(WindowEvent e) { System.exit(0); }
+	}
+	public static void main(String[] args) {
+		new Seat();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==b1)
+		{
+			CurrInfo.setArea("A");
+			new Seats();
+		}else if(e.getSource()==b2)
+		{
+			CurrInfo.setArea("B");
+			new Seats();
+		}else if(e.getSource()==b3)
+		{
+			CurrInfo.setArea("C");
+			new Seats();
+		}else if(e.getSource()==b4)
+		{
+			CurrInfo.setArea("D");
+			new Seats();
+		}
+	}
+}

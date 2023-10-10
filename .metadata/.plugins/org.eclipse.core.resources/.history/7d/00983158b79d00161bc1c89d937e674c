@@ -1,0 +1,148 @@
+import java.awt.BorderLayout;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import DB.MemberDAO;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+public class How extends JPanel implements ActionListener{
+	ButtonGroup bg_pay = new ButtonGroup();
+	JRadioButton rad_card = new JRadioButton("½Å¿ëÄ«µå", false);
+	JRadioButton rad_deposit = new JRadioButton("¹«ÅëÀåÀÔ±Ý", false);
+	Choice ch_bank = new Choice();
+	JLabel lb_money = new JLabel("0");
+	
+	MemberDAO mdao=new MemberDAO();
+	
+	JButton b_payment = new JButton("°áÁ¦");
+	How(){
+		lb_money.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		rad_card.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		rad_deposit.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		rad_card.setBackground(Color.WHITE);
+		rad_deposit.setBackground(Color.WHITE);
+
+		JFrame jf = new JFrame("°áÁ¦Ã¢");
+		JPanel u_p = new JPanel();
+		JPanel p_1 = new JPanel();
+		JPanel p_2 = new JPanel();
+		JPanel p_3 = new JPanel();
+		JPanel p_4 = new JPanel();
+		JPanel gri_p = new JPanel(new GridLayout(4,1));
+		JPanel gri_p1 = new JPanel(new GridLayout(2,1));
+		JPanel d_p = new JPanel();
+		
+		u_p.setBackground(Color.WHITE);
+		p_1.setBackground(Color.WHITE);
+		p_2.setBackground(Color.WHITE);
+		p_3.setBackground(Color.WHITE);
+		p_4.setBackground(Color.WHITE);
+		gri_p.setBackground(Color.WHITE);
+		d_p.setBackground(Color.WHITE);
+		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension screenSize = tk.getScreenSize();
+        jf.setSize(1000, 600);
+		int x1 = screenSize.width / 2 - this.getWidth() / 2;
+		int y1 = screenSize.height / 2 - this.getHeight() / 2;
+		
+		JLabel time = new JLabel("00:04");
+		time.setForeground(Color.RED);
+		JLabel newline1 = new JLabel("\n");
+		
+		ch_bank.addItem("±¹¹ÎÀºÇà");
+		ch_bank.addItem("½ÅÇÑÀºÇà");
+		ch_bank.addItem("±â¾÷ÀºÇà");
+		ch_bank.addItem("³óÇùÀºÇà");
+		ch_bank.addItem("¿ì¸®ÀºÇà");
+		JLabel newline2 = new JLabel("\n");
+		JLabel l1 = new JLabel("ÃÖÁ¾ °áÁ¦±Ý¾× : ");
+		JLabel won = new JLabel("¿ø");
+		
+		lb_money.setText(Integer.toString(CurrInfo.getAmount()));
+		
+		l1.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		won.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		
+		JButton title=new JButton();
+		ImageIcon icon = new ImageIcon("image/howtopay.png");
+		title.setIcon(icon);
+		title.setText(null);
+		
+		JButton logo=new JButton();
+		ImageIcon icon1 = new ImageIcon("image/xsmall_logo.png");
+		logo.setIcon(icon1);
+		logo.setText(null);
+		
+		u_p.add(time);
+		u_p.add(newline1);
+		jf.add(u_p, BorderLayout.NORTH);
+		bg_pay.add(rad_card);
+		bg_pay.add(rad_deposit);
+		p_1.add(rad_card);
+		p_1.add(rad_deposit);
+		p_2.add(ch_bank);
+		p_2.add(newline2);
+		p_3.add(l1);
+		p_3.add(lb_money);
+		p_3.add(won);
+		p_4.add(title);
+		gri_p.add(p_1);
+		gri_p.add(p_2);
+		gri_p.add(p_3);
+		gri_p.add(b_payment);
+		gri_p1.add(p_4);
+		gri_p1.add(gri_p);
+		jf.add(gri_p1, BorderLayout.CENTER);
+		d_p.add(logo);
+		jf.add(d_p, BorderLayout.SOUTH);
+		//jf.setLocation(x1, y1);
+        jf.setVisible(true); 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
+        b_payment.addActionListener(this);
+	}
+	class WClass extends WindowAdapter{
+		public void windowClosing(WindowEvent e) { System.exit(0); }
+	}
+	public static void main(String[] args) {
+		new How();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String str_howtopay;
+		String str_bank=ch_bank.getSelectedItem();
+		int int_amount=Integer.parseInt(lb_money.getText());
+		
+		if(rad_card.isSelected()){
+			str_howtopay=rad_card.getLabel();
+		}else{
+			str_howtopay=rad_deposit.getLabel();
+		}
+		
+		if(e.getSource()==b_payment)
+		{
+			mdao.InsertPay(CurrInfo.getCurrId(),str_howtopay,str_bank,int_amount);
+		}
+	}
+}

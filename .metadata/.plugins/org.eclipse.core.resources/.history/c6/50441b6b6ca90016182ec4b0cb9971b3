@@ -1,0 +1,228 @@
+import java.awt.BorderLayout;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import DB.Member;
+import DB.MemberDAO;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.TitledBorder;
+
+public class Success extends JPanel implements ActionListener{
+	ButtonGroup bg_pay = new ButtonGroup();
+	JRadioButton rad_card = new JRadioButton("½Å¿ëÄ«µå", false);
+	JRadioButton rad_deposit = new JRadioButton("¹«ÅëÀåÀÔ±Ý", false);
+	Choice ch_bank = new Choice();
+	JLabel lb_money = new JLabel("0");
+	
+	MemberDAO mdao=new MemberDAO();
+	Member mb=new Member();
+	
+	JButton bt_home=new JButton(new ImageIcon("image/bt_home.png"));
+	Success(){
+		mdao.insertData(CurrInfo.getType(), CurrInfo.getArea(), CurrInfo.getSeatnum(), CurrInfo.getPayment(), CurrInfo.getBank(), CurrInfo.getAmount(), CurrInfo.getMonth(), CurrInfo.getDay(),CurrInfo.getInning(),CurrInfo.getCurrId());
+		
+		bt_home.setBorderPainted(false);
+		bt_home.setBackground(Color.WHITE);
+		
+		lb_money.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		rad_card.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		rad_deposit.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		rad_card.setBackground(Color.WHITE);
+		rad_deposit.setBackground(Color.WHITE);
+		
+		JLabel l_seatnum = new JLabel("ÁÂ¼®¹øÈ£ : ");
+		JLabel l_area=new JLabel("±¸¿ª");
+		JLabel lb_seatnum=new JLabel("¹ø");
+		JLabel area=new JLabel();
+		JLabel seatnum=new JLabel();
+		
+		JLabel show = new JLabel("°ø¿¬¸í : ");
+		JLabel showname=new JLabel();
+		
+		JLabel watch = new JLabel("°ü¶÷ÀÏ½Ã : ");
+		JLabel l_month=new JLabel("¿ù");
+		JLabel l_day=new JLabel("ÀÏ");
+		JLabel l_inning=new JLabel("È¸");
+		JLabel month=new JLabel();
+		JLabel day=new JLabel();
+		JLabel inning=new JLabel();
+
+		JFrame jf = new JFrame("°áÁ¦Ã¢");
+		JPanel u_p = new JPanel();
+		JPanel t_p = new JPanel();
+		JPanel p_1 = new JPanel();
+		JPanel p_2 = new JPanel();
+		JPanel p_3 = new JPanel();
+		JPanel p_4 = new JPanel();
+		JPanel p_5 = new JPanel();
+		JPanel gri_p = new JPanel(new GridLayout(4,1));
+		JPanel gri_p1 = new JPanel(new GridLayout(3,1));
+		
+		u_p.setBackground(Color.WHITE);
+		t_p.setBackground(Color.WHITE);
+		p_1.setBackground(Color.WHITE);
+		p_2.setBackground(Color.WHITE);
+		p_3.setBackground(Color.WHITE);
+		p_4.setBackground(Color.WHITE);
+		p_5.setBackground(Color.WHITE);
+		gri_p.setBackground(Color.WHITE);
+		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension screenSize = tk.getScreenSize();
+        jf.setSize(1000, 600);
+		int x1 = screenSize.width / 2 - this.getWidth() / 2;
+		int y1 = screenSize.height / 2 - this.getHeight() / 2;
+		
+		seatnum.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		show.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		showname.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		watch.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,14));
+		
+		seatinfo.setText(Integer.toString(CurrInfo.getAmount()));
+		showname.setText(Integer.toString(CurrInfo.getAmount()));
+		watchinfo.setText(Integer.toString(CurrInfo.getAmount()));
+		
+		JLabel title=new JLabel();
+		ImageIcon icon = new ImageIcon("image/t_success.png");
+		title.setIcon(icon);
+		title.setText(null);
+		
+		JLabel text = new JLabel("");
+		ImageIcon icon1 = new ImageIcon("image/text_success.png");
+		text.setIcon(icon1);
+		text.setText(null);
+		
+		JLabel list = new JLabel("");
+		ImageIcon icon2 = new ImageIcon("image/t_list.png");
+		list.setIcon(icon2);
+		list.setText(null);
+		
+		u_p.add(title);
+		gri_p1.add(u_p);
+		gri_p1.add(t_p);
+		GroupLayout gl_t_p = new GroupLayout(t_p);
+		gl_t_p.setHorizontalGroup(
+			gl_t_p.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_t_p.createSequentialGroup()
+					.addGroup(gl_t_p.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_t_p.createSequentialGroup()
+							.addGap(400)
+							.addComponent(list))
+						.addGroup(gl_t_p.createSequentialGroup()
+							.addGap(390)
+							.addComponent(text)))
+					.addContainerGap(561, Short.MAX_VALUE))
+		);
+		gl_t_p.setVerticalGroup(
+			gl_t_p.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_t_p.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(text)
+					.addPreferredGap(ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+					.addComponent(list))
+		);
+		t_p.setLayout(gl_t_p);
+		p_1.add(l_seatnum);
+		p_1.add(area);
+		p_1.add(l_area);
+		p_1.add(seatnum);
+		p_1.add(lb_seatnum);
+		p_2.add(show);
+		p_2.add(showname);
+		gri_p.add(p_1);
+		gri_p.add(p_2);
+		gri_p.add(p_3);
+		GroupLayout gl_p_3 = new GroupLayout(p_3);
+		gl_p_3.setHorizontalGroup(
+			gl_p_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_p_3.createSequentialGroup()
+					.addGap(396)
+					.addComponent(watch)
+					.addGap(5)
+					.addComponent(month)
+					.addGap(5)
+					.addComponent(l_month)
+					.addGap(5)
+					.addComponent(day)
+					.addGap(5)
+					.addComponent(l_day)
+					.addGap(5)
+					.addComponent(inning)
+					.addGap(5)
+					.addComponent(l_inning)
+					.addGap(314)
+					.addComponent(bt_home)
+					.addGap(87))
+		);
+		gl_p_3.setVerticalGroup(
+			gl_p_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_p_3.createSequentialGroup()
+					.addGroup(gl_p_3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(5)
+							.addComponent(watch))
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(7)
+							.addComponent(month))
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(7)
+							.addComponent(l_month))
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(7)
+							.addComponent(day))
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(7)
+							.addComponent(l_day))
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(7)
+							.addComponent(inning))
+						.addGroup(gl_p_3.createSequentialGroup()
+							.addGap(7)
+							.addComponent(l_inning))
+						.addComponent(bt_home))
+					.addContainerGap(21, Short.MAX_VALUE))
+		);
+		p_3.setLayout(gl_p_3);
+		gri_p1.add(gri_p);
+		
+		jf.getContentPane().add(gri_p1);
+		//jf.setLocation(x1, y1);
+
+        jf.setVisible(true); 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
+        bt_home.addActionListener(this);
+	}
+	class WClass extends WindowAdapter{
+		public void windowClosing(WindowEvent e) { System.exit(0); }
+	}
+	public static void main(String[] args) {
+		new Success();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==bt_home){
+			new m_Menu();
+		}
+	}
+}

@@ -1,0 +1,256 @@
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+
+import DB.Member;
+import DB.MemberDAO;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+
+public class Home extends JPanel implements ActionListener, ItemListener, FocusListener, KeyListener{
+	private CardLayout cards = new CardLayout();
+	Member mb=new Member();
+	MemberDAO mdao=new MemberDAO();
+	JFrame jf = new JFrame("홈 / 로그인 창");
+	JButton b_join = new JButton("회원가입");
+	JButton b_login=new JButton(new ImageIcon("image/bt_login.png"));
+	JButton b_find = new JButton("아이디 비밀번호 찾기");
+	JLabel slash = new JLabel(" /");
+	JTextField ta_id = new JTextField(20);
+	JPasswordField ta_pw = new JPasswordField(20);
+	String str_id;
+	String str_pw;
+	JButton jl=new JButton(new ImageIcon("image/small_Logo.png"));
+	public Home(){
+		ta_id.setText("아이디");
+		ta_pw.setText("비밀번호");
+		
+		b_join.setBorderPainted(false);
+		b_join.setBackground(Color.WHITE);
+		b_join.setForeground(new Color(104,104,104));
+		b_join.setFont(new Font("맑은 고딕",Font.BOLD,14));
+		b_find.setBorderPainted(false);
+		b_find.setBackground(Color.WHITE);
+		b_find.setForeground(new Color(104,104,104));
+		b_find.setFont(new Font("맑은 고딕",Font.BOLD,14));
+		b_login.setBorderPainted(false);
+		b_login.setBackground(Color.WHITE);
+		
+		JPanel p1 = new JPanel(new GridLayout(3,3));
+		JPanel p2 = new JPanel();
+		JPanel p3 = new JPanel();
+		JPanel p4 = new JPanel();
+		JPanel p5 = new JPanel();
+		JPanel p6 = new JPanel(new GridLayout(7,1));
+		JPanel p7 = new JPanel(new GridLayout(2,1));
+		
+		JPanel p_1 = new JPanel();
+		JPanel p_2 = new JPanel();
+		JPanel p_3 = new JPanel();
+		JPanel p_4 = new JPanel();
+		JPanel p_5 = new JPanel();
+		JPanel p_6 = new JPanel();
+		JPanel p_7 = new JPanel();
+		
+		
+		p1.setBackground(Color.WHITE);
+		p2.setBackground(Color.WHITE);
+		p3.setBackground(Color.WHITE);
+		p4.setBackground(Color.WHITE);
+		p5.setBackground(Color.WHITE);
+		p6.setBackground(Color.WHITE);
+		p_1.setBackground(Color.WHITE);
+		p_2.setBackground(Color.WHITE);
+		p_3.setBackground(Color.WHITE);
+		p_4.setBackground(Color.WHITE);
+		p_5.setBackground(Color.WHITE);
+		p_6.setBackground(Color.WHITE);
+		p_7.setBackground(Color.WHITE);
+		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension screenSize = tk.getScreenSize();
+        jf.setSize(1000, 600);
+		int x1 = screenSize.width / 2 - this.getWidth() / 2;
+		int y1 = screenSize.height / 2 - this.getHeight() / 2;
+		
+		jl.setBorderPainted(false);
+		jl.setBackground(Color.WHITE);
+		
+		JPanel b_p=new JPanel();
+		b_p.setBackground(Color.WHITE);
+		
+		JLabel j2=new JLabel();
+		ImageIcon icon2 = new ImageIcon("image/t_login.png");
+		j2.setIcon(icon2);
+		j2.setText(null);
+		p1.add(b_p);
+		GroupLayout gl_b_p = new GroupLayout(b_p);
+		gl_b_p.setHorizontalGroup(
+			gl_b_p.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_b_p.createSequentialGroup()
+					.addComponent(jl)
+					.addContainerGap(295, Short.MAX_VALUE))
+		);
+		gl_b_p.setVerticalGroup(
+			gl_b_p.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_b_p.createSequentialGroup()
+					.addComponent(jl)
+					.addContainerGap(84, Short.MAX_VALUE))
+		);
+		b_p.setLayout(gl_b_p);
+		p1.add(p_1);
+		p1.add(p_2);
+		p1.add(p_3);
+		p1.add(p_4);
+		p1.add(p_5);
+		p1.add(p_6);
+		p1.add(j2);
+		p2.add(ta_id);
+		p3.add(ta_pw);
+		p4.add(b_join);
+		p4.add(slash);
+		p4.add(b_find);
+		p5.add(b_login);
+		p6.add(p2);
+		p6.add(p3);
+		p6.add(p4);
+		p6.add(p5);
+		p6.setBorder(new TitledBorder(""));
+		p7.add(p1);
+		p7.add(p6);
+		jf.getContentPane().add(p7);
+		
+		//jf.setLocation(x1, y1);
+        jf.setVisible(true); 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.getContentPane().setLayout(cards);
+        b_join.addActionListener(this);
+        b_find.addActionListener(this);
+        b_login.addActionListener(this);
+        ta_id.addFocusListener(this);
+        ta_pw.addFocusListener(this);
+        ta_pw.addKeyListener(this);
+        jl.addActionListener(this);
+	}
+	public void loginme(){
+		str_id=ta_id.getText();
+		str_pw=ta_pw.getText();
+		
+		boolean chid=true, chpw=true;
+		
+		chid=mdao.CheckId(str_id);
+		
+		if(chid==false){
+			JOptionPane.showMessageDialog(this, "존재하지 않는 아이디입니다.");
+		}else{
+			chpw=mdao.CheckPwd(str_id, str_pw);
+			if(chpw==false)
+			{
+				JOptionPane.showMessageDialog(this, "비밀번호가 일치하지 않습니다.");
+			}else{
+				CurrInfo.setCurrId(str_id);
+				CurrInfo.setPwd(str_pw);
+				if(mdao.FindBook(CurrInfo.getCurrId())){
+					JOptionPane.showMessageDialog(this, "1인1매 예매 가능합니다!");
+				}else{
+					new ChoiceType();
+				}
+			}
+		}
+	}
+	public void changePanel(){
+		cards.next(jf.getContentPane());
+	}
+	class WClass extends WindowAdapter{
+		public void windowClosing(WindowEvent e) { System.exit(0); }
+	}
+	public static void main(String[] args) {
+		new Home();
+	}
+	public String getnowId()
+	{
+		return str_id;
+	}
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	@SuppressWarnings("deprecation")
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==b_join)
+		{
+			new Join();
+		}else if(e.getSource()==b_find)
+		{
+			new Find();
+		}else if(e.getSource()==b_login)
+		{	
+			loginme();
+		}else if(e.getSource()==jl){
+			new m_Menu();
+		}
+	}
+	@Override
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==ta_id){
+			ta_id.setText("");
+		}else if(e.getSource()==ta_pw){
+			ta_pw.setText("");
+		}
+	}
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==ta_id&&ta_id.getText().equals("")){
+			ta_id.setText("아이디");
+		}else if(e.getSource()==ta_pw&&ta_pw.getText().equals("")){
+			ta_pw.setText("비밀번호");
+		}
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyCode()==e.VK_ENTER){
+			jumin2.setText("Left 눌림");
+		}
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

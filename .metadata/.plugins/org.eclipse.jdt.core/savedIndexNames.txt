@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+G:\백업용\자바 티켓팅 게임\Task2_2611_2612\.metadata\.plugins\org.eclipse.jdt.core
+1904741536.index

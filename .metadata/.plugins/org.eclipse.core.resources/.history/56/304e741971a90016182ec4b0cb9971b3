@@ -1,0 +1,1112 @@
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import DB.MemberDAO;
+
+public class Seats extends JPanel implements ActionListener, Runnable{
+	JFrame jf = new JFrame("A구역 좌석 선택 창");
+	private int view_time=CurrInfo.getSeattime();
+	JLabel timer=new JLabel();
+	Random rd = new Random();
+	static long start = 0, end = 0, time = 0;
+	int cnt = 96, num[] = new int[97];
+	
+	Button b1 = new Button("\n");
+	Button b2 = new Button("\n");
+	Button b3 = new Button("\n");
+	Button b4 = new Button("\n");
+	Button b5 = new Button("\n");
+	Button b6 = new Button("\n");
+	Button b7 = new Button("\n");
+	Button b8 = new Button("\n");
+	Button b9 = new Button("\n");
+	Button b10 = new Button("\n");
+	Button b11 = new Button("\n");
+	Button b12 = new Button("\n");
+	Button b13 = new Button("\n");
+	Button b14 = new Button("\n");
+	Button b15 = new Button("\n");
+	Button b16 = new Button("\n");
+	
+	Button b17 = new Button("\n");
+	Button b18 = new Button("\n");
+	Button b19 = new Button("\n");
+	Button b20 = new Button("\n");
+	Button b21 = new Button("\n");
+	Button b22 = new Button("\n");
+	Button b23 = new Button("\n");
+	Button b24 = new Button("\n");
+	Button b25 = new Button("\n");
+	Button b26 = new Button("\n");
+	Button b27 = new Button("\n");
+	Button b28 = new Button("\n");
+	Button b29 = new Button("\n");
+	Button b30 = new Button("\n");
+	Button b31 = new Button("\n");
+	Button b32 = new Button("\n");
+	
+	Button b33 = new Button("\n");
+	Button b34 = new Button("\n");
+	Button b35 = new Button("\n");
+	Button b36 = new Button("\n");
+	Button b37 = new Button("\n");
+	Button b38 = new Button("\n");
+	Button b39 = new Button("\n");
+	Button b40 = new Button("\n");
+	Button b41 = new Button("\n");
+	Button b42 = new Button("\n");
+	Button b43 = new Button("\n");
+	Button b44 = new Button("\n");
+	Button b45 = new Button("\n");
+	Button b46 = new Button("\n");
+	Button b47 = new Button("\n");
+	Button b48 = new Button("\n");
+	
+	Button b49 = new Button("\n");
+	Button b50 = new Button("\n");
+	Button b51 = new Button("\n");
+	Button b52 = new Button("\n");
+	Button b53 = new Button("\n");
+	Button b54 = new Button("\n");
+	Button b55 = new Button("\n");
+	Button b56 = new Button("\n");
+	Button b57 = new Button("\n");
+	Button b58 = new Button("\n");
+	Button b59 = new Button("\n");
+	Button b60 = new Button("\n");
+	Button b61 = new Button("\n");
+	Button b62 = new Button("\n");
+	Button b63 = new Button("\n");
+	Button b64 = new Button("\n");
+	
+	Button b65 = new Button("\n");
+	Button b66 = new Button("\n");
+	Button b67 = new Button("\n");
+	Button b68 = new Button("\n");
+	Button b69 = new Button("\n");
+	Button b70 = new Button("\n");
+	Button b71 = new Button("\n");
+	Button b72 = new Button("\n");
+	Button b73 = new Button("\n");
+	Button b74 = new Button("\n");
+	Button b75 = new Button("\n");
+	Button b76 = new Button("\n");
+	Button b77 = new Button("\n");
+	Button b78 = new Button("\n");
+	Button b79 = new Button("\n");
+	Button b80 = new Button("\n");
+	
+	Button b81 = new Button("\n");
+	Button b82 = new Button("\n");
+	Button b83 = new Button("\n");
+	Button b84 = new Button("\n");
+	Button b85 = new Button("\n");
+	Button b86 = new Button("\n");
+	Button b87 = new Button("\n");
+	Button b88 = new Button("\n");
+	Button b89 = new Button("\n");
+	Button b90 = new Button("\n");
+	Button b91 = new Button("\n");
+	Button b92 = new Button("\n");
+	Button b93 = new Button("\n");
+	Button b94 = new Button("\n");
+	Button b95 = new Button("\n");
+	Button b96 = new Button("\n");
+	public Seats(){
+		start = System.currentTimeMillis();
+		
+		Panel p1 = new Panel();
+		Panel p2 = new Panel();
+		Panel p3 = new Panel();
+		Panel p4 = new Panel();
+		Panel p5 = new Panel();
+		Panel p6 = new Panel();
+		Panel p7 = new Panel();
+		Panel p8 = new Panel(new GridLayout(10,1));
+		p8.setBackground(Color.WHITE);
+		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension screenSize = tk.getScreenSize();
+        jf.setSize(1000, 600);
+		int x1 = screenSize.width / 2 - this.getWidth() / 2;
+		int y1 = screenSize.height / 2 - this.getHeight() / 2;
+		
+		b1.setBackground(new Color(165, 102, 255));
+		b2.setBackground(new Color(165, 102, 255));
+		b3.setBackground(new Color(165, 102, 255));
+		b4.setBackground(new Color(165, 102, 255));
+		b5.setBackground(new Color(165, 102, 255));
+		b6.setBackground(new Color(165, 102, 255));
+		b7.setBackground(new Color(165, 102, 255));
+		b8.setBackground(new Color(165, 102, 255));
+		b9.setBackground(new Color(165, 102, 255));
+		b10.setBackground(new Color(165, 102, 255));
+		b11.setBackground(new Color(165, 102, 255));
+		b12.setBackground(new Color(165, 102, 255));
+		b13.setBackground(new Color(165, 102, 255));
+		b14.setBackground(new Color(165, 102, 255));
+		b15.setBackground(new Color(165, 102, 255));
+		b16.setBackground(new Color(165, 102, 255));
+		
+		b17.setBackground(new Color(165, 102, 255));
+		b18.setBackground(new Color(165, 102, 255));
+		b19.setBackground(new Color(165, 102, 255));
+		b20.setBackground(new Color(165, 102, 255));
+		b21.setBackground(new Color(165, 102, 255));
+		b22.setBackground(new Color(165, 102, 255));
+		b23.setBackground(new Color(165, 102, 255));
+		b24.setBackground(new Color(165, 102, 255));
+		b25.setBackground(new Color(165, 102, 255));
+		b26.setBackground(new Color(165, 102, 255));
+		b27.setBackground(new Color(165, 102, 255));
+		b28.setBackground(new Color(165, 102, 255));
+		b29.setBackground(new Color(165, 102, 255));
+		b30.setBackground(new Color(165, 102, 255));
+		b31.setBackground(new Color(165, 102, 255));
+		b32.setBackground(new Color(165, 102, 255));
+		
+		b33.setBackground(new Color(165, 102, 255));
+		b34.setBackground(new Color(165, 102, 255));
+		b35.setBackground(new Color(165, 102, 255));
+		b36.setBackground(new Color(165, 102, 255));
+		b37.setBackground(new Color(165, 102, 255));
+		b38.setBackground(new Color(165, 102, 255));
+		b39.setBackground(new Color(165, 102, 255));
+		b40.setBackground(new Color(165, 102, 255));
+		b41.setBackground(new Color(165, 102, 255));
+		b42.setBackground(new Color(165, 102, 255));
+		b43.setBackground(new Color(165, 102, 255));
+		b44.setBackground(new Color(165, 102, 255));
+		b45.setBackground(new Color(165, 102, 255));
+		b46.setBackground(new Color(165, 102, 255));
+		b47.setBackground(new Color(165, 102, 255));
+		b48.setBackground(new Color(165, 102, 255));
+		
+		b49.setBackground(new Color(165, 102, 255));
+		b50.setBackground(new Color(165, 102, 255));
+		b51.setBackground(new Color(165, 102, 255));
+		b52.setBackground(new Color(165, 102, 255));
+		b53.setBackground(new Color(165, 102, 255));
+		b54.setBackground(new Color(165, 102, 255));
+		b55.setBackground(new Color(165, 102, 255));
+		b56.setBackground(new Color(165, 102, 255));
+		b57.setBackground(new Color(165, 102, 255));
+		b58.setBackground(new Color(165, 102, 255));
+		b59.setBackground(new Color(165, 102, 255));
+		b60.setBackground(new Color(165, 102, 255));
+		b61.setBackground(new Color(165, 102, 255));
+		b62.setBackground(new Color(165, 102, 255));
+		b63.setBackground(new Color(165, 102, 255));
+		b64.setBackground(new Color(165, 102, 255));
+		
+		b65.setBackground(new Color(165, 102, 255));
+		b66.setBackground(new Color(165, 102, 255));
+		b67.setBackground(new Color(165, 102, 255));
+		b68.setBackground(new Color(165, 102, 255));
+		b69.setBackground(new Color(165, 102, 255));
+		b70.setBackground(new Color(165, 102, 255));
+		b71.setBackground(new Color(165, 102, 255));
+		b72.setBackground(new Color(165, 102, 255));
+		b73.setBackground(new Color(165, 102, 255));
+		b74.setBackground(new Color(165, 102, 255));
+		b75.setBackground(new Color(165, 102, 255));
+		b76.setBackground(new Color(165, 102, 255));
+		b77.setBackground(new Color(165, 102, 255));
+		b78.setBackground(new Color(165, 102, 255));
+		b79.setBackground(new Color(165, 102, 255));
+		b80.setBackground(new Color(165, 102, 255));
+		
+		b81.setBackground(new Color(165, 102, 255));
+		b82.setBackground(new Color(165, 102, 255));
+		b83.setBackground(new Color(165, 102, 255));
+		b84.setBackground(new Color(165, 102, 255));
+		b85.setBackground(new Color(165, 102, 255));
+		b86.setBackground(new Color(165, 102, 255));
+		b87.setBackground(new Color(165, 102, 255));
+		b88.setBackground(new Color(165, 102, 255));
+		b89.setBackground(new Color(165, 102, 255));
+		b90.setBackground(new Color(165, 102, 255));
+		b91.setBackground(new Color(165, 102, 255));
+		b92.setBackground(new Color(165, 102, 255));
+		b93.setBackground(new Color(165, 102, 255));
+		b94.setBackground(new Color(165, 102, 255));
+		b95.setBackground(new Color(165, 102, 255));
+		b96.setBackground(new Color(165, 102, 255));
+		
+		p1.add(timer);
+		p2.add(b1); p2.add(b2); p2.add(b3); p2.add(b4); p2.add(b5); p2.add(b6); p2.add(b7); p2.add(b8);
+		p2.add(b9); p2.add(b10); p2.add(b11); p2.add(b12); p2.add(b13); p2.add(b14); p2.add(b15); p2.add(b16);
+		p3.add(b17); p3.add(b18); p3.add(b19); p3.add(b20); p3.add(b21); p3.add(b22); p3.add(b23); p3.add(b24);
+		p3.add(b25); p3.add(b26); p3.add(b27); p3.add(b28); p3.add(b29); p3.add(b30); p3.add(b31); p3.add(b32);
+		p4.add(b33); p4.add(b34); p4.add(b35); p4.add(b36); p4.add(b37); p4.add(b38); p4.add(b39); p4.add(b40);
+		p4.add(b41); p4.add(b42); p4.add(b43); p4.add(b44); p4.add(b45); p4.add(b46); p4.add(b47); p4.add(b48);
+		p5.add(b49); p5.add(b50); p5.add(b51); p5.add(b52); p5.add(b53); p5.add(b54); p5.add(b55); p5.add(b56);
+		p5.add(b57); p5.add(b58); p5.add(b59); p5.add(b60); p5.add(b61); p5.add(b62); p5.add(b63); p5.add(b64);
+		p6.add(b65); p6.add(b66); p6.add(b67); p6.add(b68); p6.add(b69); p6.add(b70); p6.add(b71); p6.add(b72);
+		p6.add(b73); p6.add(b74); p6.add(b75); p6.add(b76); p6.add(b77); p6.add(b78); p6.add(b79); p6.add(b80);
+		p7.add(b81); p7.add(b82); p7.add(b83); p7.add(b84); p7.add(b85); p7.add(b86); p7.add(b87); p7.add(b88);
+		p7.add(b89); p7.add(b90); p7.add(b91); p7.add(b92); p7.add(b93); p7.add(b94);p7.add(b95); p7.add(b96);
+		
+		p8.add(p1); p8.add(p2); p8.add(p3); p8.add(p4); p8.add(p5); p8.add(p6); p8.add(p7); jf.add(p8);
+		
+		//jf.setLocation(x1, y1);
+        jf.setVisible(true); 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        b1.addActionListener(this); 
+		b2.addActionListener(this); 
+		b3.addActionListener(this); 
+		b4.addActionListener(this);
+        b5.addActionListener(this); 
+        b6.addActionListener(this); 
+        b7.addActionListener(this); 
+        b8.addActionListener(this);
+        b9.addActionListener(this); 
+        b10.addActionListener(this); 
+        b11.addActionListener(this); 
+        b12.addActionListener(this);
+        b13.addActionListener(this); 
+        b14.addActionListener(this); 
+        b15.addActionListener(this); 
+        b16.addActionListener(this);
+        b17.addActionListener(this); 
+        b18.addActionListener(this); 
+        b19.addActionListener(this); 
+        b20.addActionListener(this);
+        b21.addActionListener(this); 
+        b22.addActionListener(this); 
+        b23.addActionListener(this);
+        b24.addActionListener(this);
+        b25.addActionListener(this);
+        b26.addActionListener(this);
+        b27.addActionListener(this);
+        b28.addActionListener(this);
+        b29.addActionListener(this);
+        b30.addActionListener(this);
+        b31.addActionListener(this);
+        b32.addActionListener(this);
+        b33.addActionListener(this);
+        b34.addActionListener(this);
+        b35.addActionListener(this);
+        b36.addActionListener(this);
+        b37.addActionListener(this);
+        b38.addActionListener(this);
+        b39.addActionListener(this);
+        b30.addActionListener(this);
+        b41.addActionListener(this);
+        b42.addActionListener(this);
+        b43.addActionListener(this);
+        b44.addActionListener(this);
+        b45.addActionListener(this);
+        b46.addActionListener(this);
+        b47.addActionListener(this);
+        b48.addActionListener(this);
+        b49.addActionListener(this);
+        b50.addActionListener(this);
+        b51.addActionListener(this);
+        b52.addActionListener(this);
+        b53.addActionListener(this);
+        b54.addActionListener(this);
+        b55.addActionListener(this);
+        b56.addActionListener(this);
+        b57.addActionListener(this);
+        b58.addActionListener(this);
+        b59.addActionListener(this);
+        b60.addActionListener(this);
+        b61.addActionListener(this);
+        b62.addActionListener(this);
+        b63.addActionListener(this);
+        b64.addActionListener(this);
+        b65.addActionListener(this);
+        b66.addActionListener(this);
+        b67.addActionListener(this);
+        b68.addActionListener(this);
+        b69.addActionListener(this);
+        b70.addActionListener(this);
+        b71.addActionListener(this);
+        b72.addActionListener(this);
+        b73.addActionListener(this);
+        b74.addActionListener(this);
+        b75.addActionListener(this);
+        b76.addActionListener(this);
+        b77.addActionListener(this);
+        b78.addActionListener(this);
+        b79.addActionListener(this);
+        b80.addActionListener(this);
+        b81.addActionListener(this);
+        b82.addActionListener(this);
+        b83.addActionListener(this);
+        b84.addActionListener(this);
+        b85.addActionListener(this);
+        b86.addActionListener(this);
+        b87.addActionListener(this);
+        b88.addActionListener(this);
+        b89.addActionListener(this);
+        b90.addActionListener(this);
+        b91.addActionListener(this);
+        b92.addActionListener(this);
+        b93.addActionListener(this);
+        b94.addActionListener(this);
+        b95.addActionListener(this);
+        b96.addActionListener(this);
+        
+        new Thread(this).start();
+	}
+	public void run() { 
+		view_time+=1;
+		while( true ) { 
+			try { 
+				view_time--; 
+				if( view_time < 0 ) { 
+		        	view_time = 0; 
+		        } 
+				timer.setForeground(Color.RED);
+		        timer.setText( "00 : 0"+view_time);
+		        timer.setFont(new Font("맑은 고딕",Font.BOLD,30));
+		        Thread.sleep(1000); 
+		        } catch(Exception e) { 
+		        e.printStackTrace(); 
+		    } 
+		} 
+    } 
+	public  int  getDigit(String str){
+		String tmpStr="";
+		char[] chArr=str.toCharArray();
+		int cntcharrTelno=chArr.length;
+		for(int i=0;i<cntcharrTelno;i++)
+		{
+			if(Character.isDigit(chArr[i])){
+				tmpStr+=chArr[i];
+			}
+		}
+		return Integer.parseInt(tmpStr);
+	}
+	public void actionPerformed(ActionEvent ae){
+		Color c = new Color(189, 189, 189);
+		end = System.currentTimeMillis();
+		time = (long) ((end - start) / 1000.0);
+		
+		//제한시간이 지났을대 모두 회색
+		if(time >= CurrInfo.getSeattime()) {
+			new SeatFail();
+			b1.setBackground(c);
+			b2.setBackground(c);
+			b3.setBackground(c);
+			b4.setBackground(c);
+			b5.setBackground(c);
+			b6.setBackground(c);
+			b7.setBackground(c);
+			b8.setBackground(c);
+			b9.setBackground(c);
+			b10.setBackground(c);
+			b11.setBackground(c);
+			b12.setBackground(c);
+			b13.setBackground(c);
+			b14.setBackground(c);
+			b15.setBackground(c);
+			b16.setBackground(c);
+			b17.setBackground(c);
+			b18.setBackground(c);
+			b19.setBackground(c);
+			b20.setBackground(c);
+			b21.setBackground(c);
+			b22.setBackground(c);
+			b23.setBackground(c);
+			b24.setBackground(c);
+			b25.setBackground(c);
+			b26.setBackground(c);
+			b27.setBackground(c);
+			b28.setBackground(c);
+			b29.setBackground(c);
+			b30.setBackground(c);
+			b31.setBackground(c);
+			b32.setBackground(c);
+			b33.setBackground(c);
+			b34.setBackground(c);
+			b35.setBackground(c);
+			b36.setBackground(c);
+			b37.setBackground(c);
+			b38.setBackground(c);
+			b39.setBackground(c);
+			b40.setBackground(c);
+			b41.setBackground(c);
+			b42.setBackground(c);
+			b43.setBackground(c);
+			b44.setBackground(c);
+			b45.setBackground(c);
+			b46.setBackground(c);
+			b47.setBackground(c);
+			b48.setBackground(c);
+			b49.setBackground(c);
+			b50.setBackground(c);
+			b51.setBackground(c);
+			b52.setBackground(c);
+			b53.setBackground(c);
+			b54.setBackground(c);
+			b55.setBackground(c);
+			b56.setBackground(c);
+			b57.setBackground(c);
+			b58.setBackground(c);
+			b59.setBackground(c);
+			b60.setBackground(c);
+			b61.setBackground(c);
+			b62.setBackground(c);
+			b63.setBackground(c);
+			b64.setBackground(c);
+			b65.setBackground(c);
+			b66.setBackground(c);
+			b67.setBackground(c);
+			b68.setBackground(c);
+			b69.setBackground(c);
+			b70.setBackground(c);
+			b71.setBackground(c);
+			b72.setBackground(c);
+			b73.setBackground(c);
+			b74.setBackground(c);
+			b75.setBackground(c);
+			b76.setBackground(c);
+			b77.setBackground(c);
+			b78.setBackground(c);
+			b79.setBackground(c);
+			b80.setBackground(c);
+			b81.setBackground(c);
+			b82.setBackground(c);
+			b83.setBackground(c);
+			b84.setBackground(c);
+			b85.setBackground(c);
+			b86.setBackground(c);
+			b87.setBackground(c);
+			b88.setBackground(c);
+			b89.setBackground(c);
+			b90.setBackground(c);
+			b91.setBackground(c);
+			b92.setBackground(c);
+			b93.setBackground(c);
+			b94.setBackground(c);
+			b95.setBackground(c);
+			b96.setBackground(c);
+		}
+		
+		//시간에 따라 선택할 수 없는 좌석의 수
+		if(time == CurrInfo.getSeattime()) cnt = 20;
+		else if(time == CurrInfo.getSeattime()-1) cnt = 35;
+		else if(time == CurrInfo.getSeattime()-2) cnt = 45;
+		else if(time == CurrInfo.getSeattime()-3) cnt = 55;
+		else if(time == CurrInfo.getSeattime()-4) cnt = 68;
+		else if(time == CurrInfo.getSeattime()-5) cnt = 79;
+		else cnt = 96;
+		
+		for(int i = 1; i <= cnt; i++){
+			num[i] = rd.nextInt(cnt-1) + 1;
+		}
+		
+		if(time >= CurrInfo.getSeattime()) new SeatFail();
+		String check = "n";
+		if(time < CurrInfo.getSeattime()){
+			if(ae.getSource() == b1) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 1) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(1); new How();}
+			}if(ae.getSource() == b2) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 2) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(2); new How();}
+			}if(ae.getSource() == b3) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 3) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(3); new How();}
+			}if(ae.getSource() == b4) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 4) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(4); new How();}
+			}if(ae.getSource() == b5) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 5) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(5); new How();}
+			}if(ae.getSource() == b6) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 6) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(6); new How();}
+			}if(ae.getSource() == b7) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 7) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(7); new How();}
+			}if(ae.getSource() == b8) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 8) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(8); new How();}
+			}if(ae.getSource() == b9) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 9) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(9); new How();}
+			}if(ae.getSource() == b10) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 10) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(10); new How();}
+			}if(ae.getSource() == b11) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 11) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(11); new How();}
+			}if(ae.getSource() == b12) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 12) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(12); new How();}
+			}if(ae.getSource() == b13) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 13) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(13); new How();}
+			}if(ae.getSource() == b14) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 14) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(14); new How();}
+			}if(ae.getSource() == b15) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 15) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(15); new How();}
+			}if(ae.getSource() == b16) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 16) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(16); new How();}
+			}if(ae.getSource() == b17) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 17) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(17); new How();}
+			}if(ae.getSource() == b18) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 18) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(18); new How();}
+			}if(ae.getSource() == b19) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 19) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(19); new How();}
+			}if(ae.getSource() == b20) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 20) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(20); new How();}
+			}if(ae.getSource() == b21) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 21) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(21); new How();}
+			}if(ae.getSource() == b22) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 22) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(22); new How();}
+			}if(ae.getSource() == b23) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 23) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(23); new How();}
+			}if(ae.getSource() == b24) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 24) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(24); new How();}
+			}if(ae.getSource() == b25) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 25) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(25); new How();}
+			}if(ae.getSource() == b26) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 26) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(26); new How();}
+			}if(ae.getSource() == b27) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 27) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(27); new How();}
+			}if(ae.getSource() == b28) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 28) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(28); new How();}
+			}if(ae.getSource() == b29) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 29) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(29); new How();}
+			}if(ae.getSource() == b30) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 30) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(30); new How();}
+			}
+			if(ae.getSource() == b31) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 31) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(31); new How();}
+			}if(ae.getSource() == b32) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 32) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(32); new How();}
+			}if(ae.getSource() == b33) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 33) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(33); new How();}
+			}if(ae.getSource() == b34) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 34) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(34); new How();}
+			}if(ae.getSource() == b35) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 35) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(35); new How();}
+			}if(ae.getSource() == b36) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 36) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(36); new How();}
+			}if(ae.getSource() == b37) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 37) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(37); new How();}
+			}if(ae.getSource() == b38) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 38) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(38); new How();}
+			}if(ae.getSource() == b39) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 39) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(39); new How();}
+			}if(ae.getSource() == b40) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 40) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(40); new How();}
+			}if(ae.getSource() == b41) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 41) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(41); new How();}
+			}if(ae.getSource() == b42) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 42) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(42); new How();}
+			}if(ae.getSource() == b43) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 43) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(43); new How();}
+			}if(ae.getSource() == b44) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 44) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(44); new How();}
+			}if(ae.getSource() == b45) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 45) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(45); new How();}
+			}if(ae.getSource() == b46) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 46) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(46); new How();}
+			}if(ae.getSource() == b47) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 47) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(47); new How();}
+			}if(ae.getSource() == b48) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 48) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(48); new How();}
+			}if(ae.getSource() == b49) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 49) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(49); new How();}
+			}if(ae.getSource() == b50) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 50) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(50); new How();}
+			}if(ae.getSource() == b51) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 51) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(51); new How();}
+			}if(ae.getSource() == b52) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 52) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(52); new How();}
+			}if(ae.getSource() == b53) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 53) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(53); new How();}
+			}if(ae.getSource() == b54) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 54) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(54); new How();}
+			}if(ae.getSource() == b55) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 55) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(55); new How();}
+			}if(ae.getSource() == b56) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 56) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(56); new How();}
+			}if(ae.getSource() == b57) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 57) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(57); new How();}
+			}if(ae.getSource() == b58) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 58) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(58); new How();}
+			}if(ae.getSource() == b59) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 59) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(59); new How();}
+			}if(ae.getSource() == b60) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 60) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(60); new How();}
+			}if(ae.getSource() == b61) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 61) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(61); new How();}
+			}if(ae.getSource() == b62) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 62) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(62); new How();}
+			}if(ae.getSource() == b63) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 63) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(63); new How();}
+			}if(ae.getSource() == b64) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 64) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(64); new How();}
+			}if(ae.getSource() == b65) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 65) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(65); new How();}
+			}if(ae.getSource() == b66) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 66) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(66); new How();}
+			}if(ae.getSource() == b67) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 67) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(67); new How();}
+			}if(ae.getSource() == b68) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 68) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(68); new How();}
+			}if(ae.getSource() == b69) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 69) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(69); new How();}
+			}if(ae.getSource() == b70) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 70) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(70); new How();}
+			}if(ae.getSource() == b71) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 71) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(71); new How();}
+			}if(ae.getSource() == b72) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 72) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(72); new How();}
+			}if(ae.getSource() == b73) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 73) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(73); new How();}
+			}if(ae.getSource() == b74) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 74) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(74); new How();}
+			}if(ae.getSource() == b75) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 75) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(75); new How();}
+			}if(ae.getSource() == b76) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 76) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(76); new How();}
+			}if(ae.getSource() == b77) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 77) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(77); new How();}
+			}if(ae.getSource() == b78) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 78) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(78); new How();}
+			}if(ae.getSource() == b79) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 79) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(79); new How();}
+			}if(ae.getSource() == b80) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 80) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(80); new How();}
+			}if(ae.getSource() == b81) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 81) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(81); new How();}
+			}if(ae.getSource() == b82) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 82) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(82); new How();}
+			}if(ae.getSource() == b83) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 83) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(83); new How();}
+			}if(ae.getSource() == b84) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 84) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(84); new How();}
+			}if(ae.getSource() == b85) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 85) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(85); new How();}
+			}if(ae.getSource() == b86) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 86) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(86); new How();}
+			}if(ae.getSource() == b87) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 87) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(87); new How();}
+			}if(ae.getSource() == b88) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 88) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(88); new How();}
+			}if(ae.getSource() == b89) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 89) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(89); new How();}
+			}if(ae.getSource() == b90) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 90) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(90); new How();}
+			}if(ae.getSource() == b91) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 91) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(91); new How();}
+			}if(ae.getSource() == b92) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 92) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(92); new How();}
+			}if(ae.getSource() == b93) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 93) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(93); new How();}
+			}if(ae.getSource() == b94) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 94) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(94); new How();}
+			}if(ae.getSource() == b95) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 95) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(95); new How();}
+			}if(ae.getSource() == b96) {
+				check = "n"; int n=0;
+				for(int i = 1; i <= 96; i++) if(num[i] == 96) check="y";
+				if(check.equals("y")) JOptionPane.showMessageDialog(this, "이미 선택된 좌석입니다.");
+				else{ CurrInfo.setSeatnum(96); new How();}
+			}
+		}
+
+		for(int i = 0; i < 96; i++){
+			if(num[i] == 1) b1.setBackground(c);
+			if(num[i] == 2) b2.setBackground(c);
+			if(num[i] == 3) b3.setBackground(c);
+			if(num[i] == 4) b4.setBackground(c);
+			if(num[i] == 5) b5.setBackground(c);
+			if(num[i] == 6) b6.setBackground(c);
+			if(num[i] == 7) b7.setBackground(c);
+			if(num[i] == 8) b8.setBackground(c);
+			if(num[i] == 9) b9.setBackground(c);
+			if(num[i] == 10) b10.setBackground(c);
+			if(num[i] == 11) b11.setBackground(c);
+			if(num[i] == 12) b12.setBackground(c);
+			if(num[i] == 13) b13.setBackground(c);
+			if(num[i] == 14) b14.setBackground(c);
+			if(num[i] == 15) b15.setBackground(c);
+			if(num[i] == 16) b16.setBackground(c);
+			if(num[i] == 17) b17.setBackground(c);
+			if(num[i] == 18) b18.setBackground(c);
+			if(num[i] == 19) b19.setBackground(c);
+			if(num[i] == 20) b20.setBackground(c);
+			if(num[i] == 21) b21.setBackground(c);
+			if(num[i] == 22) b22.setBackground(c);
+			if(num[i] == 23) b23.setBackground(c);
+			if(num[i] == 24) b24.setBackground(c);
+			if(num[i] == 25) b25.setBackground(c);
+			if(num[i] == 26) b26.setBackground(c);
+			if(num[i] == 27) b27.setBackground(c);
+			if(num[i] == 28) b28.setBackground(c);
+			if(num[i] == 29) b29.setBackground(c);
+			if(num[i] == 30) b30.setBackground(c);
+			if(num[i] == 31) b31.setBackground(c);
+			if(num[i] == 32) b32.setBackground(c);
+			if(num[i] == 33) b33.setBackground(c);
+			if(num[i] == 34) b34.setBackground(c);
+			if(num[i] == 35) b35.setBackground(c);
+			if(num[i] == 36) b36.setBackground(c);
+			if(num[i] == 37) b37.setBackground(c);
+			if(num[i] == 38) b38.setBackground(c);
+			if(num[i] == 39) b39.setBackground(c);
+			if(num[i] == 40) b40.setBackground(c);
+			if(num[i] == 41) b41.setBackground(c);
+			if(num[i] == 42) b42.setBackground(c);
+			if(num[i] == 43) b43.setBackground(c);
+			if(num[i] == 44) b44.setBackground(c);
+			if(num[i] == 45) b45.setBackground(c);
+			if(num[i] == 46) b46.setBackground(c);
+			if(num[i] == 47) b47.setBackground(c);
+			if(num[i] == 48) b48.setBackground(c);
+			if(num[i] == 49) b49.setBackground(c);
+			if(num[i] == 50) b50.setBackground(c);
+			if(num[i] == 51) b51.setBackground(c);
+			if(num[i] == 52) b52.setBackground(c);
+			if(num[i] == 53) b53.setBackground(c);
+			if(num[i] == 54) b54.setBackground(c);
+			if(num[i] == 55) b55.setBackground(c);
+			if(num[i] == 56) b56.setBackground(c);
+			if(num[i] == 57) b57.setBackground(c);
+			if(num[i] == 58) b58.setBackground(c);
+			if(num[i] == 59) b59.setBackground(c);
+			if(num[i] == 60) b60.setBackground(c);
+			if(num[i] == 61) b61.setBackground(c);
+			if(num[i] == 62) b62.setBackground(c);
+			if(num[i] == 63) b63.setBackground(c);
+			if(num[i] == 64) b64.setBackground(c);
+			if(num[i] == 65) b65.setBackground(c);
+			if(num[i] == 66) b66.setBackground(c);
+			if(num[i] == 67) b67.setBackground(c);
+			if(num[i] == 68) b68.setBackground(c);
+			if(num[i] == 69) b69.setBackground(c);
+			if(num[i] == 70) b70.setBackground(c);
+			if(num[i] == 71) b71.setBackground(c);
+			if(num[i] == 72) b72.setBackground(c);
+			if(num[i] == 73) b73.setBackground(c);
+			if(num[i] == 74) b74.setBackground(c);
+			if(num[i] == 75) b75.setBackground(c);
+			if(num[i] == 76) b76.setBackground(c);
+			if(num[i] == 77) b77.setBackground(c);
+			if(num[i] == 78) b78.setBackground(c);
+			if(num[i] == 79) b79.setBackground(c);
+			if(num[i] == 80) b70.setBackground(c);
+			if(num[i] == 81) b81.setBackground(c);
+			if(num[i] == 82) b82.setBackground(c);
+			if(num[i] == 83) b83.setBackground(c);
+			if(num[i] == 84) b84.setBackground(c);
+			if(num[i] == 85) b85.setBackground(c);
+			if(num[i] == 86) b86.setBackground(c);
+			if(num[i] == 87) b87.setBackground(c);
+			if(num[i] == 88) b88.setBackground(c);
+			if(num[i] == 89) b89.setBackground(c);
+			if(num[i] == 90) b90.setBackground(c);
+			if(num[i] == 91) b91.setBackground(c);
+			if(num[i] == 92) b92.setBackground(c);
+			if(num[i] == 93) b93.setBackground(c);
+			if(num[i] == 94) b94.setBackground(c);
+			if(num[i] == 95) b95.setBackground(c);
+			if(num[i] == 96) b96.setBackground(c);
+		}
+	}
+	class WClass extends WindowAdapter{
+		public void windowClosing(WindowEvent e) { System.exit(0); }
+	}
+	public static void main(String[] args) {
+		new Seats();
+	}
+}

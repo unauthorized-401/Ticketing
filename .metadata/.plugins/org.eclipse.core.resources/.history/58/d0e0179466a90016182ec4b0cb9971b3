@@ -1,0 +1,98 @@
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+import DB.MemberDAO;
+import javax.swing.GroupLayout.Alignment;
+
+public class First extends JPanel implements ActionListener{
+	JButton bt_member=new JButton(new ImageIcon("image/login.png"));
+	JButton bt_nomember=new JButton(new ImageIcon("image/check.png"));
+	
+	MemberDAO mdo=new MemberDAO();
+	public First(){
+		bt_member.setBorderPainted(false);
+		bt_member.setBackground(Color.WHITE);
+		bt_nomember.setBorderPainted(false);
+		bt_nomember.setBackground(Color.WHITE);
+		
+		JFrame jf = new JFrame("YEAH24");
+		JPanel p1=new JPanel();
+		JPanel p2=new JPanel(new GridLayout(5,1));
+		JPanel p3=new JPanel(new GridLayout(2,1));
+		
+		JPanel b1=new JPanel();
+		JPanel b2=new JPanel();
+		
+		b1.setBackground(Color.WHITE);
+		b2.setBackground(Color.WHITE);
+		
+		JButton jl=new JButton();
+		ImageIcon icon = new ImageIcon("image/Logo.png");
+		jl.setIcon(icon);
+		jl.setText(null);
+		
+		p1.setBackground(Color.WHITE);
+		b1.add(bt_member);
+		b2.add(bt_nomember);
+		p2.add(b1);
+		p2.add(b2);
+		p2.setBackground(Color.WHITE);
+		p3.add(p1);
+		GroupLayout gl_p1 = new GroupLayout(p1);
+		gl_p1.setHorizontalGroup(
+			gl_p1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_p1.createSequentialGroup()
+					.addGap(475)
+					.addComponent(jl))
+		);
+		gl_p1.setVerticalGroup(
+			gl_p1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_p1.createSequentialGroup()
+					.addGap(5)
+					.addComponent(jl))
+		);
+		p1.setLayout(gl_p1);
+		p3.add(p2);
+		jf.getContentPane().add(p3);
+		jf.setVisible(true);
+		jf.setSize(1000, 600);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		
+		bt_member.addActionListener(this);
+		bt_nomember.addActionListener(this);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new First();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		// TODO Auto-generated method stub
+		if(ae.getSource()==bt_member)
+		{
+			if(!mdo.FindBook(CurrInfo.getCurrId())&&CurrInfo.getCurrId().equals(""))
+			{
+				new Home();
+			}else if(mdo.FindBook(CurrInfo.getCurrId())){
+				JOptionPane.showMessageDialog(this, "1인 1매 예매가능합니다!");
+			}else if(!CurrInfo.getCurrId().equals(""))
+			{
+				new ChoiceType();
+			}
+		}else if(ae.getSource()==bt_nomember)
+		{
+			if(CurrInfo.getCurrId().equals(""))
+			{
+				JOptionPane.showMessageDialog(this, "로그인 한 뒤 이용가능합니다!");
+				new Login();
+			}else{
+				new List();
+			}
+		}
+	}
+}
